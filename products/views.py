@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
-from . models import Product, Category
+from . models import Product, Category, ProductImage
 from page.models import HomePageSlideShow, InstagramSection
 from django.db.models import Q
 
@@ -33,14 +33,16 @@ class ProductsPageView(ListView):
 
 
 
-class ProductDetailPageView(DetailView):
-    model = Product
-    context_object_name = 'product'
+class ProductDetailPageView(ListView):
+    queryset = Product.objects.filter(is_available=True).order_by('modified')
+    context_object_name = 'products'
+    paginate_by = 20
     template_name = 'detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['products'] = Product.objects.filter(is_available=True).order_by('modified')
+        context['product'] = Product.objects.get(slug=self.kwargs['slug'])
+        context['product_image'] = ProductImage.objects.filter(product__slug=self.kwargs['slug'])
         return context
 
 

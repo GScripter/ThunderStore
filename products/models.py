@@ -27,3 +27,11 @@ class Product(TimeStampedModel):
     def __str__(self):
         return self.name
 
+
+class ProductImage(TimeStampedModel):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE
+    )
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=False)
+    description = models.TextField(blank=True)
+

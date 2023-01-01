@@ -12,7 +12,7 @@
         {% if user.procfile_photo %}
         <a href="{{user.procfile_photo.url}}"><img id="img" src="{{user.procfile_photo.url}}" alt=""></a>
         {% else %}
-        <img src="{% static 'imgs/fundo.jpg' %}" alt="">
+        <img src="{% static 'imgs/fundo.jpg' %}" id="img" alt="">
         {% endif %}
         {{form.procfile_photo}}
       </div>

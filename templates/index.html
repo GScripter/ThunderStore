@@ -86,12 +86,26 @@
     </section>
 
     <!-- Featured Products -->
-    <section id="featured-products" class="featured-products">
-      <h5>DESTAQUES DE PRODUTOS</h5>
-      <div class="featured-products-slide">
-        {% for product in featured %}
-        <div class="featured-slide-item"><img src="{{ product.image.url }}" alt=""><p class="instagram-post-text">{{ product.name }} R$ {{ product.price }}</p><a class="btn btn-success" href="{% url 'products:product_detail' product.slug %}">VISITAR</a></div>
-        {% endfor %}
+    <section id="featured-products" class="container featured-products">
+      <h5>DESTAQUES DE PRODUTOS 🌟</h5>
+
+      <div class="row">
+        <div class="col-12 m-auto d-flex" style="max-width: 1050px; overflow: scroll;">
+          {% for product in featured %}
+            <div class="col-7 col-sm-7 col-md-5 col-lg-4 col-xl-3">
+              <a href="{% url 'products:product_detail' product.slug %}">
+                <div class="m-1 card h-100">
+                  <img class="card-img-top" src="{{ product.image.url }}" alt="">
+
+                  <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text font-weight-bold">{{ product.price }}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </section>
   </div>

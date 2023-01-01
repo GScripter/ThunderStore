@@ -277,26 +277,10 @@ main .categories a:hover{
 
 
 /* Featured Slide */
-.featured-products-slide{
-  display: flex;
-  overflow: scroll;
-  text-align: center;
-  margin: 10px auto 10px auto;
-}
-
 .featured-products h5{
   text-align: center;
   font-weight: bold;
   margin: 50px 0 20px 0;
-}
-
-.featured-slide-item{
-  margin-right: 5px;
-}
-
-.featured-products-slide img{
-  width: 250px;
-  height: 70%;
 }
 
 /* Instagram Post */
@@ -428,6 +412,11 @@ footer .links-list li a:hover{
 .contact-body iframe{
   height: 400px; 
 }
+
+/* ----------------------- */
+/* Detail
+/* ----------------------- */
+
 
 
 /* ----------------------- */
@@ -846,6 +835,10 @@ footer .links-list li a:hover{
   color: #fff;
 }
 
+.dark .bi-search{
+  color: #fff;
+}
+
 
 
 /* ----------------------- */
@@ -864,10 +857,6 @@ footer .links-list li a:hover{
 @media (min-width: 950px){
   main .category{
     width: 30%;
-  }
-
-  .featured-products-slide{
-    margin: 20px;
   }
 
   .instagram .instagram-post{
@@ -981,10 +970,6 @@ footer .links-list li a:hover{
     width: 31%;
   }
 
-  .featured-products-slide{
-    margin: 10px;
-  }
-
   .instagram .instagram-post{
     width: 20%;
   }
@@ -999,10 +984,5 @@ footer .links-list li a:hover{
   main .category{
     width: 25%;
   }
-
-  .featured-products-slide{
-    margin: 0 140px;
-  }
-
 }
 

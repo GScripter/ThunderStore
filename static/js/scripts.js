@@ -53,3 +53,9 @@ if(localStorage.theme){
     DefaultTheme()
   }
 }
+
+
+function ShowProductImage(smallImg){
+  var fullImg =  document.getElementById("imageBox")
+  fullImg.src = smallImg.src;
+}

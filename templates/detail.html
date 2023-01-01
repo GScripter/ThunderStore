@@ -5,13 +5,25 @@
 
 {% block content %}
 <div class="container my-3">
-  <div class="row d-flex justify-content-center">
-    <div class="col-10 col-sm-9 col-md-8 col-lg-7 col-xl-6 col-md-5 mb-5">
-      <img class="container-fluid" src="{{ product.image.url }}" alt="">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-7 mb-4">
+      <div class="row">
+        <div class="col-12">
+          <img style="max-height: 600px" class="img-fluid w-100" src="{{product.image.url}}" alt="" id="imageBox">
+        </div>
+
+        <div class="container">
+          <div class="col-12 mt-1 d-flex" style="overflow: scroll;">
+            <div class="col-4"><img class="h-100 img-fluid" src="{{product.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
+            {% for image in product_image %}
+              <div class="col-4"><img class="h-100 img-fluid" src="{{image.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-9">
+
+    <div class="col-12 col-md-8 col-lg-5">
       <h1 class="font-weight-bold">{{ product.name }}</h1>
       <h2>R$ {{ product.price }}</h2>
       <p>{{ product.description }}</p>
@@ -31,31 +43,31 @@
   </div>
 
   <section class="others-products mt-5">
-    <h3 class="text-center mb-4">Você também pode gostar.</h3>
-      <div class="row">
-        {% for merchandise in products %}
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-          <div class="card h-100">
-            <a href="{% url 'products:product_detail' merchandise.slug %}">
-              <img class="card-img-top" src="{{ merchandise.image.url }}" alt="">
-            </a>
+    <h3 class="text-center mb-4">Você também pode gostar. 😍</h3>
+    <div class="row">
+      {% for merchandise in products %}
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+          <a href="{% url 'products:product_detail' merchandise.slug %}">
+            <img class="card-img-top" src="{{ merchandise.image.url }}" alt="">
+          </a>
 
-            <div class="card-body d-flex flex-column justify-content-between">
-              <a class="text-decoration-none text-dark" href="{% url 'products:product_detail' merchandise.slug %}">
-                <h5 class="card-title">{{ merchandise.name }}</h5>
-              </a>
-              <a class="text-decoration-none text-dark" href="{% url 'products:product_detail' merchandise.slug %}">
-                <p class="card-text font-weight-bold">{{ merchandise.price }}</p>
-              </a>
-            </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <a class="text-decoration-none text-dark" href="{% url 'products:product_detail' merchandise.slug %}">
+              <h5 class="card-title">{{ merchandise.name }}</h5>
+            </a>
+            <a class="text-decoration-none text-dark" href="{% url 'products:product_detail' merchandise.slug %}">
+              <p class="card-text font-weight-bold">{{ merchandise.price }}</p>
+            </a>
           </div>
         </div>
-        {% endfor %}
-
-        {% if is_paginated %}
-        {% include 'pagination.html' with page=page_obj %}
-        {% endif %}
       </div>
+      {% endfor %}
+
+      {% if is_paginated %}
+      {% include 'pagination.html' with page=page_obj %}
+      {% endif %}
+    </div>
   </section>
 </div>
 
