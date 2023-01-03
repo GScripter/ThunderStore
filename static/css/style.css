@@ -416,7 +416,14 @@ footer .links-list li a:hover{
 /* ----------------------- */
 /* Detail
 /* ----------------------- */
+.gallery .main-img{
+  height: 450px
+}
 
+.gallery .secondary-imgs{
+  height: 100px;
+  padding-right: 5px;
+}
 
 
 /* ----------------------- */
@@ -984,5 +991,6 @@ footer .links-list li a:hover{
   main .category{
     width: 25%;
   }
+
 }
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{post.title}}{% endblock title %}
+
+{% block content %}
+<main class="post container mt-5">
+  <h2 class="post-title">{{ post.title }}</h2>
+  <div class="post-content-preview">{{ post.content|safe }}</div>
+  <p class="post-meta">"Postado por {{ user.username }} em {{ post.created }}"</p>
+  <a href="{% url 'blog:home-page-view' %}" class="return"><i class="bi bi-arrow-left"></i> Retornar</a>
+</main>
+{% include 'footer.html' %}
+{% endblock %}
+
+

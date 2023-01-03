@@ -27,6 +27,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('create/', include('orders.urls')),
     path('create-checkout-session/<int:id>/', CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
+    path('blog/', include('blog.urls')),
+    path('ckeditor', include('ckeditor_uploader.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

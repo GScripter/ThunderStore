@@ -6,24 +6,24 @@
 {% block content %}
 <div class="container my-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-7 mb-4">
-      <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mb-4">
+      <div class="row gallery">
         <div class="col-12">
-          <img style="max-height: 600px" class="img-fluid w-100" src="{{product.image.url}}" alt="" id="imageBox">
+          <img class="img-fluid w-100 main-img" src="{{product.image.url}}" alt="" id="imageBox">
         </div>
 
         <div class="container">
           <div class="col-12 mt-1 d-flex" style="overflow: scroll;">
-            <div class="col-4"><img class="h-100 img-fluid" src="{{product.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
+            <div class="col-3"><img class="w-100 img-fluid secondary-imgs" src="{{product.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
             {% for image in product_image %}
-              <div class="col-4"><img class="h-100 img-fluid" src="{{image.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
+              <div class="col-3"><img class="w-100 img-fluid secondary-imgs" src="{{image.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
             {% endfor %}
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-12 col-md-8 col-lg-5">
+    <div class="col-12 col-md-8 col-lg-6">
       <h1 class="font-weight-bold">{{ product.name }}</h1>
       <h2>R$ {{ product.price }}</h2>
       <p>{{ product.description }}</p>

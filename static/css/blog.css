@@ -1,0 +1,29 @@
+.dark .post-content-preview{
+  color: #fff;
+}
+
+.posts .post-title, .post .return{
+  color: #275981;
+}
+
+.posts .title{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.post .post-title{
+  margin-bottom: 30px;
+}
+
+.post .return{
+  font-size: 20px;
+}
+
+
+@media (min-width: 1000px){
+  .post .post-content-preview p img{
+    width: 600px !important;
+    height: auto !important;
+  }
+}
+

@@ -52,12 +52,15 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'localflavor',
+    'ckeditor',
+    'ckeditor_uploader',
     # My Apps
     'users',
     'products',
     'page',
     'shopping_cart',
     'orders',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -188,4 +191,8 @@ CART_SESSION_ID = 'cart'
 # Payment
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+
+
+# ckeditor
+CKEDITOR_UPLOAD_PATH = 'blog'
 
