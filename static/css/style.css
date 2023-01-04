@@ -135,7 +135,7 @@ input:checked ~ label .hamburger-icon:after{
 }
 
 .dropdown .search{
-  width: 370px;
+  width: 330px;
   height: 35px;
   font-size: 17px;
   color: gray;
@@ -146,6 +146,11 @@ input:checked ~ label .hamburger-icon:after{
   width: 150px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.translateAndtheme select{
+  padding: 8px;
 }
 
 .bi-moon-stars-fill:hover, .bi-brightness-high:hover{
@@ -158,10 +163,6 @@ input:checked ~ label .hamburger-icon:after{
 
 #ThemeChk{
   display: none;
-}
-
-.translateAndtheme .btn-group button{
-  padding: 3px 5px;
 }
 
 .dropdown-top hr{

@@ -5,10 +5,14 @@
 
 {% block content %}
 <main class="post container mt-5">
-  <h2 class="post-title">{{ post.title }}</h2>
-  <div class="post-content-preview">{{ post.content|safe }}</div>
-  <p class="post-meta">"Postado por {{ user.username }} em {{ post.created }}"</p>
-  <a href="{% url 'blog:home-page-view' %}" class="return"><i class="bi bi-arrow-left"></i> Retornar</a>
+  <div class="row">
+    <div class="col-12 col-lg-8 m-auto">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <div class="post-content-preview">{{ post.content|safe }}</div>
+      <p class="post-meta">"Postado por {{ user.username }} em {{ post.created }}"</p>
+      <a href="{% url 'blog:home-page-view' %}" class="return"><i class="bi bi-arrow-left"></i> Retornar</a>
+    </div>
+  </div>
 </main>
 {% include 'footer.html' %}
 {% endblock %}
