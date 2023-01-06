@@ -6,6 +6,7 @@ from . models import Post
 class BlogHomePageView(ListView):
     model = Post
     context_object_name = 'posts'
+    paginate_by = 20
 
 
 class BlogPostView(DetailView):

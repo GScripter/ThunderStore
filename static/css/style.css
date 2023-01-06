@@ -153,6 +153,11 @@ input:checked ~ label .hamburger-icon:after{
   padding: 8px;
 }
 
+.bi-moon-stars-fill, .bi-brightness-high{
+  margin-left: 8px;
+  padding: 2px 20px;
+}
+
 .bi-moon-stars-fill:hover, .bi-brightness-high:hover{
   cursor: pointer;
 }
@@ -915,10 +920,12 @@ footer .links-list li a:hover{
 
   .desktop-header-top select{
     opacity: .5;
+    margin-left: 10px;
   }
 
   .translateAndtheme{
     margin-top: 0;
+    margin-right: 50px;
   }
 
   .desktop-header-top .topbar-icons a{

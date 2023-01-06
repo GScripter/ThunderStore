@@ -1,6 +1,7 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 from autoslug import AutoSlugField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(TimeStampedModel):
@@ -20,7 +21,7 @@ class Product(TimeStampedModel):
     slug = AutoSlugField(unique=True, populate_from='name', always_update=False)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, default='no_image')
     price = models.FloatField(max_length=10, blank=False)
-    description = models.TextField()
+    description = RichTextUploadingField()
     featured = models.BooleanField(default=False)
     is_available = models.BooleanField(default=True)
 
