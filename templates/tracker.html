@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rastrear Produtos{% endblock title %}
+
+{% block content %}
+<main  class="container my-5">
+  {% if order %}
+  <div class="row justify-content-center"><div class="col-11 col-md-9 col-lg-6" id="ordertracker-widget"><h2 id="analyze-title">Processando pedido.</h2></div></div>
+  {% else %}
+  <div class="no-Order">
+    <div class="row text-center justify-content-center">
+      <div class="col-12"><h4>Você ainda não fez nem um pedido.</h4></div>
+      <div class="col-12"><img style="height: 350px;" src="{% static 'imgs/stick.png'%}" alt=""></div>
+      <a href="{% url 'products:products' %}" class="text-primary">Começar a comprar</a>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if is_paginated %}
+  {% include 'pagination.html' with page=page_obj %}
+  {% endif %}
+</main>
+
+{% include 'footer.html' %}
+<script src="https://www.ordertracker.com/sdk.js"></script>
+{% for code in tracker_number %}
+  {% if code.tracker %}
+    <script>
+      var analyze = window.document.getElementById('analyze-title')
+      analyze.style.display = 'none'
+      Ordertracker({
+        "id": "63b87ba5beb20d508c143e99",
+        /*
+                               If you want to load the tracking status directly instead of showing a tracking form
+                                           Uncomment the next line & replace YOUR_TRACKING_NUMBER by a valid tracking number
+         */
+        "trackingNumber": "{{code.tracker}}"
+      }).render('#ordertracker-widget')
+    </script>
+  {% endif %}
+{% endfor %}
+{% endblock content %}
+

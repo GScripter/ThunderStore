@@ -6,7 +6,7 @@ from users.models import User
 # Create your views here.
 def create_order(request, id):
     user = User.objects.get(id=id)
-    create_order = Order.objects.create(username=user.username, cpf=user.cpf, cep=user.cep,
+    create_order = Order.objects.create(user_id=user.id, username=user.username, cpf=user.cpf, cep=user.cep,
                                         state=user.state, city=user.city, address=user.address,
                                         district=user.district, number=user.number, complement=user.complement)
     order = Order.objects.filter(username=user.username)[0:1]

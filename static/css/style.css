@@ -71,9 +71,9 @@ a:hover{
   width: 30px;
   height: 29px;
   display: flex;
-  justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-top: 6px;
 }
 
 .hamburger-icon{
@@ -551,10 +551,6 @@ footer .links-list li a:hover{
   box-shadow: 0 0 5px #ff96ad, 0 0 25px #ff96ad, 0 0 50px #ff96ad, 0 0 200px #ff96ad;
 }
 
-.exit-sys div a{
-}
-
-
 
 /* ----------------------- */
 /* Cart
@@ -851,7 +847,6 @@ footer .links-list li a:hover{
 .dark .bi-search{
   color: #fff;
 }
-
 
 
 /* ----------------------- */

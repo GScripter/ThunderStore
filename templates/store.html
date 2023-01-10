@@ -18,7 +18,7 @@
           </a>
 
           {% for category in categories %}
-          <a class="text-decoration-none list-group-item list-group-item-light" href="{% url 'products:filter_products' category.slug %}">{{ category.name }}</a>
+          <a class="text-decoration-none list-group-item list-group-item-light" href="{% url 'products:filter_products' category.name %}">{{ category.name }}</a>
           {% endfor %}
         </ul>
       </div>

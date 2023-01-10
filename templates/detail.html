@@ -16,7 +16,7 @@
           <div class="col-12 mt-1 d-flex" style="overflow: scroll;">
             <div class="col-3"><img class="w-100 img-fluid secondary-imgs" src="{{product.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
             {% for image in product_image %}
-              <div class="col-3"><img class="w-100 img-fluid secondary-imgs" src="{{image.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
+            <div class="col-3"><img class="w-100 img-fluid secondary-imgs" src="{{image.image.url}}" alt="" onclick="ShowProductImage(this)"></div>
             {% endfor %}
           </div>
         </div>
@@ -26,18 +26,16 @@
     <div class="col-12 col-md-8 col-lg-6">
       <h1 class="font-weight-bold">{{ product.name }}</h1>
       <h2>R$ {{ product.price }}0</h2>
-      <p>{{ product.description|safe }}</p>
       <form class="form-group" action="{% url 'cart:cart_add' product.id %}" method="POST">
         {% csrf_token %}
         <p class="form-inline">
         </p>
         <input class="btn btn-success" type="submit" value="Adicionar ao Carrinho">
       </form>
+      <p>{{ product.description|safe }}</p>
       <p>
         Ir para o catálogo de
-        <a class="text-decoration-none" href="">
-          {{ product.category }}
-        </a>
+        <a class="text-decoration-none text-primary" href="{% url 'products:filter_products' product.category %}">{{ product.category }}</a>
       </p>
     </div>
   </div>
@@ -73,4 +71,3 @@
 
 {% include 'footer.html' %}
 {% endblock content %}
-

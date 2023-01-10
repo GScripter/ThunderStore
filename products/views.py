@@ -3,6 +3,10 @@ from django.views.generic import ListView, DetailView, TemplateView
 from . models import Product, Category, ProductImage
 from page.models import HomePageSlideShow, InstagramSection
 from django.db.models import Q
+from orders.models import Order
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from users.models import User
 
 # Create your views here.
 class HomePageView(ListView):
@@ -53,11 +57,11 @@ class ProductsCategoryView(ListView):
     template_name = 'category.html'
 
     def get_queryset(self):
-        return Product.objects.filter(category__slug=self.kwargs['slug'], is_available=True).order_by('-modified')
+        return Product.objects.filter(category__name=self.kwargs['str'], is_available=True).order_by('-modified')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.kwargs['slug']
+        context['title'] = self.kwargs['str']
         return context
 
 
@@ -75,3 +79,20 @@ class SearchResults(ListView):
         return products
 
 
+@method_decorator(login_required, name='dispatch')
+class TrackerPageView(ListView):
+    context_object_name = 'tracker_number'
+    paginate_by = 1
+    template_name = 'tracker.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(user_id=self.request.user.id)
+
+
+    def get_context_data(self, **kwargs):
+        order = False
+        if Order.objects.filter(user_id=self.request.user.id):
+            order = True
+        context = super().get_context_data(**kwargs)
+        context['order'] = order
+        return context
