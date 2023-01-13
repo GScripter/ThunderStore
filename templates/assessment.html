@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Assessment{% endblock title %}
+
+{% block content %}
+<main class="container mt-4">
+  <h1 class="text-center mb-5">Avaliações</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-7">
+      <!--Assesstement -->
+      {% if assessments %}
+        {% for assessment in assessments %}
+        <div class="assessment col-11 col-md-9 col-lg-7">
+          <div class="image_review">
+            <div class="customer_image">
+              {% if assessment.image %}
+                <img src="{{assessment.image.url}}" alt="customer image">
+                {% else %}
+                <img src="{% static 'imgs/fundo.jpg' %}"/>
+              {% endif %}
+            </div>
+            <div class="customer_name_review_status">
+              {% if assessment.name %}
+                <p class="customer_name">{{assessment.name}}</p>
+              {% else %}
+                <p class="customer_name">Desconhecido</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="customer_comment row">
+            <p class="col-12">"{{assessment.text}}"</p>
+            <div class="col-4">
+              {% if user == assessment.user %}
+                <a href="{% url 'products:delete_assessment' product assessment.id %}"><i class="bi bi-trash3-fill"></i></a>
+                <a href="{% url 'products:update_assessment' product assessment.id %}"><i class="bi bi-pencil-square"></i></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>* Seja o primeiro a comentar</h3>
+      {% endif %}
+      <!-- End -->
+    </div>
+
+    <div class="col-11 col-lg-5">
+      {% if user.is_authenticated %}
+      <form action="{% url 'products:assessment' product %}" method="POST">
+        {% csrf_token %}
+        <h4 class="text-center mt-5">Deixe sua opinião á respeito do produto.</h4>
+        <div class="row justify-content-center">
+          <div class="col-12"><textarea id="" name="assessment" cols="30" rows="10" class="form-control"></textarea></div>
+          <div class="col-12"><input type="submit" value="comentar" class="form-control btn btn-success mt-2"></div>
+        </div>
+      </form>
+      {% else %}
+      <div class="row justify-content-center"><a class="mt-5 button-anime" href="{% url 'account_login' %}">Cadastre-se para comentar.</a></div>
+      {% endif %}
+    </div>
+  </div>
+</main>
+{% include 'footer.html' %}
+{% endblock content %}
+

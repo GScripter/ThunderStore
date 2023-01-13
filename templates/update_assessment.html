@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Atualizar Avaliação{% endblock %}
+
+{% block content %}
+
+<main>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Atualizar avaliação</h2>
+    <div>
+      <form method="POST" class="update_assessment text-center">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-7">{{form.text}}</div>
+          <div class="col-11 col-lg-6"><input class="mb-3 form-control btn btn-success" type="submit" value="Atualizar"></div>
+        </div>
+        <a class="btn text-primary" href="">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</main>
+{% include 'footer.html' %}
+{% endblock%}
+
+

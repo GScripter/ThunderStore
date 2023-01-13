@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Deletar Avaliação{% endblock %}
+
+{% block content %}
+
+<main>
+  <div class="exit-sys">
+    <h2>Tem certeza que deseja deletar sua avaliação?</h2>
+    <div>
+      <form method='POST'>
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Deletar">
+      </form>
+      <a href="">Cancelar</a>
+    </div>
+  </div>
+</main>
+
+{% endblock%}
+

@@ -31,7 +31,7 @@ class ContactPageView(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class ConfigPageView(UpdateView):
     template_name = 'config.html'
-    fields = ('procfile_photo', 'cpf', 'username', 'email', 'cep', 'state', 'city', 'address', 'district', 'number', 'complement',)
+    fields = ('procfile_photo', 'cpf', 'name', 'email', 'cep', 'state', 'city', 'address', 'district', 'number', 'complement',)
     success_url = '/'
 
     def get_queryset(self):
@@ -49,3 +49,7 @@ class AccountDelete(DeleteView):
 
 class CancelPageView(TemplateView):
     template_name = 'cancel.html'
+
+
+class PoliticPageView(TemplateView):
+    template_name = 'politic.html'

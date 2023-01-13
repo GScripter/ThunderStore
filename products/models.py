@@ -2,6 +2,7 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
+from django.contrib.auth import get_user_model
 
 
 class Category(TimeStampedModel):
@@ -35,3 +36,15 @@ class ProductImage(TimeStampedModel):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=False)
     description = models.TextField(blank=True)
 
+
+class Assessment(TimeStampedModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='procfile/%Y/%m/%d', blank=True)
+    name = models.CharField(max_length=100, blank=False)
+    text = models.CharField(max_length=350, blank=False)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f'{self.product}'

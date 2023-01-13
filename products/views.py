@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from . models import Product, Category, ProductImage
 from page.models import HomePageSlideShow, InstagramSection
 from django.db.models import Q
@@ -7,6 +8,8 @@ from orders.models import Order
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from users.models import User
+from . models import Assessment
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 class HomePageView(ListView):
@@ -40,13 +43,15 @@ class ProductsPageView(ListView):
 class ProductDetailPageView(ListView):
     queryset = Product.objects.filter(is_available=True).order_by('modified')
     context_object_name = 'products'
-    paginate_by = 20
     template_name = 'detail.html'
+    paginate_by = 20
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['product'] = Product.objects.get(slug=self.kwargs['slug'])
         context['product_image'] = ProductImage.objects.filter(product__slug=self.kwargs['slug'])
+        product = Product.objects.get(slug=self.kwargs['slug'])
+        context['assessments'] = Assessment.objects.filter(product=product).order_by('-modified')[:1]
         return context
 
 
@@ -96,3 +101,39 @@ class TrackerPageView(ListView):
         context = super().get_context_data(**kwargs)
         context['order'] = order
         return context
+
+
+class AssessmentPageView(TemplateView):
+    template_name = 'assessment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = self.kwargs['id']
+        product = Product.objects.get(id=self.kwargs['id'])
+        context['assessments'] = Assessment.objects.filter(product=product).order_by('-modified')
+        return context
+
+    def post(self, request, **kwargs):
+        product = Product.objects.get(id=self.kwargs['id'])
+        Assessment.objects.create(user_id=self.request.user.id, image=self.request.user.procfile_photo, name=self.request.user.name, text=self.request.POST['assessment'], product=product)
+        return redirect('products:product_detail', product.slug)
+
+
+class DeleteAssessment(DeleteView):
+    model = Assessment
+    template_name = 'delete_assessment.html'
+
+    def get_success_url(self, **kwargs):
+        product = Product.objects.get(id=self.kwargs['id'])
+        return reverse('products:product_detail', kwargs={'slug': product.slug})
+
+
+class UpdateAssessment(UpdateView):
+    model = Assessment
+    template_name = 'update_assessment.html'
+    fields = ['text']
+
+    def get_success_url(self, **kwargs):
+        product = Product.objects.get(id=self.kwargs['id'])
+        return reverse('products:product_detail', kwargs={'slug': product.slug})
+

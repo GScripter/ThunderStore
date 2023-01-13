@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import HomePageView, ProductsPageView, ProductDetailPageView, ProductsCategoryView,  SearchResults, TrackerPageView
+from . views import HomePageView, ProductsPageView, ProductDetailPageView, ProductsCategoryView,  SearchResults, TrackerPageView, AssessmentPageView, DeleteAssessment, UpdateAssessment
 
 app_name = 'products'
 
@@ -10,5 +10,8 @@ urlpatterns = [
     path('produtos/categoria/<str:str>/', ProductsCategoryView.as_view(), name='filter_products'),
     path('resultados/', SearchResults.as_view(), name='search_results'),
     path('produto/rastreio/', TrackerPageView.as_view(), name='tracker'),
+    path('avaliacoes/<int:id>/', AssessmentPageView.as_view(), name='assessment'),
+    path('delete/<int:id>/assessment/<pk>/', DeleteAssessment.as_view(), name='delete_assessment'),
+    path('update/<int:id>/assessment/<pk>/', UpdateAssessment.as_view(), name='update_assessment'),
 ]
 
