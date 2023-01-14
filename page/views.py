@@ -1,7 +1,7 @@
 from django.shortcuts import render 
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import UpdateView, DeleteView
-from . models import AboutPage
+from . models import AboutPage, PoliticPage
 from django.core.mail import send_mail
 from django.conf import settings
 from users.models import User
@@ -51,5 +51,7 @@ class CancelPageView(TemplateView):
     template_name = 'cancel.html'
 
 
-class PoliticPageView(TemplateView):
+class PoliticPageView(ListView):
+    context_object_name = 'politics'
+    queryset = PoliticPage.objects.all().order_by('-modified')[0:1]
     template_name = 'politic.html'

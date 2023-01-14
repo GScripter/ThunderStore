@@ -441,7 +441,6 @@ footer .links-list li a:hover{
   padding: 5px;
   min-height: 180px;
   margin: auto;
-  border-bottom: 1px solid #343A40;
 }
 
 .assessment .image_review{
@@ -517,6 +516,7 @@ footer .links-list li a:hover{
   padding-right: 5px;
   text-align: left;
   font-style: italic;
+  border-bottom: 1px solid #343A40;
 }
 
 .assessment .customer_comment div a{

@@ -1,5 +1,6 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class HomePageSlideShow(TimeStampedModel):
@@ -40,3 +41,8 @@ class AboutPage(TimeStampedModel):
         return 'AboutPage'
 
 
+class PoliticPage(TimeStampedModel):
+    content = RichTextField()
+
+    def __str__(self):
+        return 'Politic'

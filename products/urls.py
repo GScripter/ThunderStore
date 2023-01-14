@@ -11,7 +11,7 @@ urlpatterns = [
     path('resultados/', SearchResults.as_view(), name='search_results'),
     path('produto/rastreio/', TrackerPageView.as_view(), name='tracker'),
     path('avaliacoes/<int:id>/', AssessmentPageView.as_view(), name='assessment'),
-    path('delete/<int:id>/assessment/<pk>/', DeleteAssessment.as_view(), name='delete_assessment'),
-    path('update/<int:id>/assessment/<pk>/', UpdateAssessment.as_view(), name='update_assessment'),
+    path('deletar/<int:id>/avaliacao/<pk>/', DeleteAssessment.as_view(), name='delete_assessment'),
+    path('atualizar/<int:id>/avaliacao/<pk>/', UpdateAssessment.as_view(), name='update_assessment'),
 ]
 

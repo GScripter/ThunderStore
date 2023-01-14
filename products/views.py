@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from . models import Product, Category, ProductImage
 from page.models import HomePageSlideShow, InstagramSection
 from django.db.models import Q
-from orders.models import Order
+from orders.models import Order, Item
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from users.models import User
@@ -119,19 +119,25 @@ class AssessmentPageView(TemplateView):
         return redirect('products:product_detail', product.slug)
 
 
+@method_decorator(login_required, name='dispatch')
 class DeleteAssessment(DeleteView):
-    model = Assessment
     template_name = 'delete_assessment.html'
+
+    def get_queryset(self):
+        return Assessment.objects.filter(user_id=self.request.user.id)
 
     def get_success_url(self, **kwargs):
         product = Product.objects.get(id=self.kwargs['id'])
         return reverse('products:product_detail', kwargs={'slug': product.slug})
 
 
+@method_decorator(login_required, name='dispatch')
 class UpdateAssessment(UpdateView):
-    model = Assessment
     template_name = 'update_assessment.html'
     fields = ['text']
+
+    def get_queryset(self):
+        return Assessment.objects.filter(user_id=self.request.user.id)
 
     def get_success_url(self, **kwargs):
         product = Product.objects.get(id=self.kwargs['id'])

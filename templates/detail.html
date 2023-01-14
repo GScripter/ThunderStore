@@ -63,10 +63,10 @@
               {% endif %}
             </div>
           </div>
-        </div>
         <!-- End -->
         {% endfor %}
-      <a class="btn btn-primary m-3" href="{% url 'products:assessment' product.id %}">Mais</a>
+        <a class="btn btn-primary m-3" href="{% url 'products:assessment' product.id %}">Mais</a>
+      </div>
       {% else %}
         {% if user.is_authenticated %}
           <form action="{% url 'products:assessment' product.id %}" method="POST">

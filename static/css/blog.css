@@ -2,7 +2,7 @@
   color: #fff;
 }
 
-.posts .post-title, .post .return{
+.return{
   color: #4682B4;
 }
 
@@ -20,7 +20,7 @@
   margin-bottom: 30px;
 }
 
-.post .return{
+.return{
   font-size: 20px;
 }
 
