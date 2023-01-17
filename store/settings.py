@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['thunderstore.herokuapp.com','*']
+ALLOWED_HOSTS = ['thunderstore.up.railway.app','*']
 
 
 # Application definition
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'localflavor',
     'ckeditor',
     'ckeditor_uploader',
+    'corsheaders',
     # My Apps
     'users',
     'products',
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'store.urls'
@@ -192,7 +194,7 @@ CART_SESSION_ID = 'cart'
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
-
 # ckeditor
 CKEDITOR_UPLOAD_PATH = 'blog'
 
+CSRF_TRUSTED_ORIGINS = ['https://thunderstore.up.railway.app']
