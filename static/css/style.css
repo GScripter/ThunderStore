@@ -577,7 +577,6 @@ footer .links-list li a:hover{
 /* Login
 /* ----------------------- */
 #login{
-  margin-top: 10vh;
   max-width: 700px;
 }
 
@@ -585,29 +584,21 @@ footer .links-list li a:hover{
   text-align: center;
 }
 
-#login form ul li{
-  padding: 7px 10px;
-  margin: 5px;
+#login .social-login form img{
+  width: 40px;
+  padding-right: 10px;
+}
+
+#login .social-login form:first-child{
+  margin-right: 20px;
+}
+
+#login .social-login form button{
+  border: none;
+  color: #000;
+  padding: 8px 25px;
   border-radius: 5px;
-}
-
-#login form ul li:nth-child(1){
-  background-color: #3B5998;
-  color: #fff;
-}
-
-#login form ul li:nth-child(2){
-  border: 2px solid #ddd;
-}
-
-.btn-black{
-  background-color: #000;
-  color: #fff;
-}
-
-#login form ul{
-  display: flex;
-  justify-content: center;
+  background-color: #f0f0f0;
 }
 
 #login form input{
@@ -987,6 +978,11 @@ footer .links-list li a:hover{
 
 .dark .assessment .customer_name, .dark .assessment .customer_comment{
   color: #fff;
+}
+
+.dark #login .social-login button{
+  color: #fff;
+  background-color: #343A40;
 }
 
 

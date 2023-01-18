@@ -8,14 +8,23 @@
 {% block content %}
 
 <main>
-  <div id="login" class="container">
+  <div id="login" class="container mt-5">
+
+    <h3 class="text-center">Entrar com</h3>
+    <div class="d-flex mt-4 mb-2 justify-content-center list-unstyled social-login">
+      <form action="{% provider_login_url 'facebook' %}" method="POST">
+      {% csrf_token %}
+        <button type="submit"><img src="https://img.icons8.com/fluency/48/null/facebook-circled.png"/>Facebook</button>
+      </form>
+
+      <form action="{% provider_login_url 'google' method='js_sdk' %}" method="POST">
+      {% csrf_token %}
+        <button type="submit"><img src="https://img.icons8.com/fluency/48/null/google-logo.png"/> Google</button>
+      </form>
+    </div>
+
     <form method="POST">
       {% csrf_token %}
-      <h3>Entrar com</h3>
-      <ul>
-        <li><a href="{% provider_login_url 'facebook' method='oauth2' %}"><i class="bi bi-facebook"> Facebook</i></a></li>
-        <li><a href="{% provider_login_url 'google' method='js_sdk' %}"><i class="bi bi-google"> Google</i></a></li>
-      </ul>
       {{form}}
       <input type="submit" value="Enviar" class="form-control btn btn-dark">
       <p>Não tem uma conta?<a href="{% url 'account_signup' %}"> Cadastrar</a><p>
