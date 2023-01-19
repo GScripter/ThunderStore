@@ -8,7 +8,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
-        YOUR_DOMAIN = 'https://thunderstore.herokuapp.com'
+        YOUR_DOMAIN = 'https://thunderstore.up.railway.app'
         if settings.DEBUG:
             YOUR_DOMAIN = 'http://localhost:8000'
         cart_products = Cart(request).session['cart']
@@ -17,7 +17,6 @@ class CreateCheckoutSessionView(View):
             total += int(cart_products[number]['quantity']) * float(cart_products[number]['price'])
         total = total * 100
         checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
             line_items=[
                 {
                     'price_data':{
