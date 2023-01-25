@@ -13,5 +13,6 @@ class AssessmentInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    search_fields = ['id']
     inlines = [ImagesInline, AssessmentInline]
 

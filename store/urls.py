@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from payments.views import CreateCheckoutSessionView
+from payments.views import CreateCheckoutSessionView, OrderCompleteHook
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,8 +25,8 @@ urlpatterns = [
     path('pagina/', include('page.urls')),
     path('cart/', include('shopping_cart.urls')),
     path('accounts/', include('allauth.urls')),
-    path('create/', include('orders.urls')),
     path('create-checkout-session/<int:id>/', CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
+    path('complete_hook/', OrderCompleteHook.as_view()),
     path('blog/', include('blog.urls')),
     path('ckeditor', include('ckeditor_uploader.urls')),
 ]

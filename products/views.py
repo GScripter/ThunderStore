@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from . models import Product, Category, ProductImage
 from page.models import HomePageSlideShow, InstagramSection
 from django.db.models import Q
-from orders.models import Order, Item
+from payments.models import Order, Item
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from users.models import User

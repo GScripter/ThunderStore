@@ -51,6 +51,10 @@ class CancelPageView(TemplateView):
     template_name = 'cancel.html'
 
 
+class SuccessPageView(TemplateView):
+    template_name = 'order_success.html'
+
+
 class PoliticPageView(ListView):
     context_object_name = 'politics'
     queryset = PoliticPage.objects.all().order_by('-modified')[0:1]

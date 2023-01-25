@@ -60,8 +60,8 @@ INSTALLED_APPS = [
     'products',
     'page',
     'shopping_cart',
-    'orders',
     'blog',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -194,6 +194,7 @@ CART_SESSION_ID = 'cart'
 # Payment
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = config('STRIPE_ENDPOINT_SECRET')
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = 'blog'
