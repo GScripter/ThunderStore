@@ -34,14 +34,15 @@ class CreateCheckoutSessionView(View):
                 'quantity': int(cart_products[number]['quantity']),
             }]
         # Criar seção de pagamento.
+        user = User.objects.get(id=self.request.user.id)
         checkout_session = stripe.checkout.Session.create(
+            customer_email = user.email,
             line_items = line_items,
             mode='payment',
             success_url=YOUR_DOMAIN + f'/pagina/pedido/sucesso/',
             cancel_url=YOUR_DOMAIN + '/pagina/pedido/cancelado/',
         )
         # Criar order
-        user = User.objects.get(id=self.request.user.id)
         create_order = Order.objects.create(checkout_session_id=checkout_session['id'], user_id=user.id, username=user.username, cpf=user.cpf, cep=user.cep,
                                             state=user.state, city=user.city, address=user.address,
                                             district=user.district, number=user.number, complement=user.complement)
@@ -67,11 +68,11 @@ class OrderCompleteHook(generics.GenericAPIView):
         )
         # Handle the checkout.session.completed event
         if event['type'] == 'checkout.session.completed':
-            session_id = event['data']['object']['id']
-            order = Order.objects.filter(checkout_session_id=session_id).first()
-            if order:
-                order.is_paid = True
-                order.save()
-                print("Payment was successful.")
+            if event['data']['object']['payment_status'] == 'paid':
+                session_id = event['data']['object']['id']
+                order = Order.objects.filter(checkout_session_id=session_id).first()
+                if order:
+                    order.is_paid = True
+                    order.save()
         return HttpResponse(status=200)
 

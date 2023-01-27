@@ -91,16 +91,7 @@ class TrackerPageView(ListView):
     template_name = 'tracker.html'
 
     def get_queryset(self):
-        return Order.objects.filter(user_id=self.request.user.id)
-
-
-    def get_context_data(self, **kwargs):
-        order = False
-        if Order.objects.filter(user_id=self.request.user.id):
-            order = True
-        context = super().get_context_data(**kwargs)
-        context['order'] = order
-        return context
+        return Order.objects.filter(user_id=self.request.user.id, is_paid=True)
 
 
 class AssessmentPageView(TemplateView):
@@ -111,6 +102,10 @@ class AssessmentPageView(TemplateView):
         context['product'] = self.kwargs['id']
         product = Product.objects.get(id=self.kwargs['id'])
         context['assessments'] = Assessment.objects.filter(product=product).order_by('-modified')
+        context['there_is_user_assessment'] = False
+        if Assessment.objects.filter(product=product, user_id=self.request.user.id):
+            context['there_is_user_assessment'] = True
+            context['user_assessment'] = Assessment.objects.get(product=product, user_id=self.request.user.id)
         return context
 
     def post(self, request, **kwargs):
