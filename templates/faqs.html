@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FaQs{% endblock title %}
+
+{% block content %}
+<main class="container">
+  <div class="row d-flex justify-content-center faqs">
+    <div class="col-12">
+      <h2 class="mt-3 mb-4 text-center">FaQs</h2>
+    </div>
+
+    <div class="col-12 col-lg-8">
+
+      {% for faq_item in faqs %}
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="{{ faq_item.faq_id }}">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ faq_item.faq_id }}1" aria-expanded="true" aria-controls="{{ faq_item.faq_id }}1">
+                {{ faq_item.title }}
+              </button>
+            </h2>
+            {% if forloop.counter == 1 %}
+              <div id="{{ faq_item.faq_id }}1" class="accordion-collapse collapse show" aria-labelledby="{{ faq_item.faq_id }}" data-bs-parent="#accordionExample">
+            {% else %}
+              <div id="{{ faq_item.faq_id }}1" class="accordion-collapse collapse" aria-labelledby="{{ faq_item.faq_id }}" data-bs-parent="#accordionExample">
+            {% endif %}
+              <div class="accordion-body">
+                {{ faq_item.text }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</main>
+
+{% include 'footer.html' %}
+{% endblock content %}
+

@@ -1,8 +1,8 @@
-.dark .post-content-preview{
+.dark .post-content-preview, .dark .posts .post-subtitle, .dark .posts .post-meta, .dark hr{
   color: #fff;
 }
 
-.return{
+.return, .posts .post-title{
   color: #4682B4;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .post .post-title{
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .return{
@@ -27,4 +27,8 @@
 .post .post-content-preview p img{
   width: 100% !important;
   height: auto !important;
+}
+
+.posts hr{
+  margin-bottom: 50px;
 }

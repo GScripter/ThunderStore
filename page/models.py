@@ -46,3 +46,12 @@ class PoliticPage(TimeStampedModel):
 
     def __str__(self):
         return 'Politic'
+
+
+class FaQs(TimeStampedModel):
+    title = models.CharField(max_length=80, blank=False)
+    text = models.TextField()
+    faq_id = models.CharField(max_length=80, blank=False)
+
+    def __str__(self):
+        return 'FaQs'

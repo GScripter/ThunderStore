@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import AboutPageView, ContactPageView, ConfigPageView, AccountDelete, CancelPageView, PoliticPageView, SuccessPageView
+from . views import AboutPageView, ContactPageView, ConfigPageView, AccountDelete, CancelPageView, PoliticPageView, SuccessPageView, FaQsPageView
 
 app_name = 'page'
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('deletar_conta/<int:pk>/', AccountDelete.as_view(), name='account_delete'),
     path('pedido/cancelado/', CancelPageView.as_view(), name='cancel'),
     path('pedido/sucesso/', SuccessPageView.as_view(), name='success'),
+    path('faqs/', FaQsPageView.as_view(), name='faqs'),
 ]
 
 

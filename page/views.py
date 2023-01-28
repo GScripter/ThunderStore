@@ -1,7 +1,7 @@
 from django.shortcuts import render 
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import UpdateView, DeleteView
-from . models import AboutPage, PoliticPage
+from . models import AboutPage, PoliticPage, FaQs
 from django.core.mail import send_mail
 from django.conf import settings
 from users.models import User
@@ -53,6 +53,12 @@ class CancelPageView(TemplateView):
 
 class SuccessPageView(TemplateView):
     template_name = 'order_success.html'
+
+
+class FaQsPageView(ListView):
+    queryset = FaQs.objects.all().order_by('-modified')
+    context_object_name = 'faqs'
+    template_name = 'faqs.html'
 
 
 class PoliticPageView(ListView):

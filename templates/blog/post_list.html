@@ -9,10 +9,15 @@
     <div class="col-12 col-lg-9 m-auto justify-content-center">
       <h1 class="title">Blog</h1>
       {% for post in posts %}
-        <a href="{% url 'blog:blog-post-view' post.slug %}"><h2 class="post-title">{{ post.title }}</h2></a>
-        <p class="post-subtitle">{{ post.subtitle }}</p>
-        <p class="post-meta">Postado por {{ user.username }} em {{ post.created }}</p>
-        <hr>
+        <a href="{% url 'blog:blog-post-view' post.slug %}">
+          {% if post.image %}
+          <div class="post-image" style="width: 100%; height: 300px; background-position: center; background-image: url('{{ post.image.url }}');"></div>
+          {% endif %}
+          <h2 class="post-title mt-3">{{ post.title }}</h2>
+          <p class="post-subtitle">{{ post.subtitle }}</p>
+          <p class="post-meta">Postado por <i>{{ user.name }}</i> em <i>{{ post.created }}</i></p>
+          <hr>
+        </a>
       {% endfor %}
 
     {% if is_paginated %}
