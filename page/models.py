@@ -50,7 +50,7 @@ class PoliticPage(TimeStampedModel):
 
 class FaQs(TimeStampedModel):
     title = models.CharField(max_length=80, blank=False)
-    text = models.TextField()
+    text = RichTextField()
     faq_id = models.CharField(max_length=80, blank=False)
 
     def __str__(self):

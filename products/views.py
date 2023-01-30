@@ -52,6 +52,17 @@ class ProductDetailPageView(ListView):
         context['product_image'] = ProductImage.objects.filter(product__slug=self.kwargs['slug'])
         product = Product.objects.get(slug=self.kwargs['slug'])
         context['assessments'] = Assessment.objects.filter(product=product).order_by('-modified')[:1]
+
+        product = Product.objects.get(slug=self.kwargs['slug'])
+        product_user_rating = Assessment.objects.filter(product=product, user_id=self.request.user.id)
+        orders = Order.objects.filter(user_id=self.request.user.id, is_paid=True)
+        items = 0
+        for order in orders:
+            if Item.objects.filter(name=product.name, order=order):
+                items += 1
+        if items > 0:
+            context['assessments_total'] = Assessment.objects.filter(product=product, user_id=self.request.user.id).count()
+            context['assessments_limit'] = items
         return context
 
 
@@ -102,15 +113,22 @@ class AssessmentPageView(TemplateView):
         context['product'] = self.kwargs['id']
         product = Product.objects.get(id=self.kwargs['id'])
         context['assessments'] = Assessment.objects.filter(product=product).order_by('-modified')
-        context['there_is_user_assessment'] = False
-        if Assessment.objects.filter(product=product, user_id=self.request.user.id):
-            context['there_is_user_assessment'] = True
-            context['user_assessment'] = Assessment.objects.get(product=product, user_id=self.request.user.id)
+        product_user_rating = Assessment.objects.filter(product=product, user_id=self.request.user.id)
+        orders = Order.objects.filter(user_id=self.request.user.id, is_paid=True)
+        items = 0
+        for order in orders:
+            if Item.objects.filter(name=product.name, order=order):
+                items += 1
+        if items > 0:
+            context['assessments_total'] = Assessment.objects.filter(product=product, user_id=self.request.user.id).count()
+            context['assessments_limit'] = items
         return context
 
     def post(self, request, **kwargs):
         product = Product.objects.get(id=self.kwargs['id'])
-        Assessment.objects.create(user_id=self.request.user.id, image=self.request.user.procfile_photo, name=self.request.user.name, text=self.request.POST['assessment'], product=product)
+        Assessment.objects.create(user_id=self.request.user.id, image=self.request.user.procfile_photo,
+                                  name=self.request.user.name, text=self.request.POST['assessment'],
+                                  choice_nota=self.request.POST['nota'], product=product)
         return redirect('products:product_detail', product.slug)
 
 
@@ -129,7 +147,7 @@ class DeleteAssessment(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class UpdateAssessment(UpdateView):
     template_name = 'update_assessment.html'
-    fields = ['text']
+    fields = ['text', 'choice_nota']
 
     def get_queryset(self):
         return Assessment.objects.filter(user_id=self.request.user.id)

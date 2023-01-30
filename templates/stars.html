@@ -1,0 +1,39 @@
+{% comment %} Stars {% endcomment %}
+{% if assessment.choice_nota == 'péssimo' %}
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i>péssimo</i>
+{% elif assessment.choice_nota == 'ruim' %}
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i>ruim</i>
+{% elif assessment.choice_nota == 'bom' %}
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star"></i>
+  <i class="bi bi-star"></i>
+  <i>bom</i>
+{% elif assessment.choice_nota == 'excelente' %}
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star"></i>
+  <i>excelente</i>
+{% elif assessment.choice_nota == 'maravilhoso' %}
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i class="bi bi-star-fill"></i>
+  <i>maravilhoso</i>
+{% endif %}
+{% comment %} End Stars {% endcomment %}
+

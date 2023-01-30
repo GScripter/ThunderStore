@@ -10,9 +10,9 @@
     <div class="row g-3">
       <div class="col-12 procfile-config-image mb-4">
         {% if user.procfile_photo %}
-        <a href="{{user.procfile_photo.url}}"><img id="img" src="{{user.procfile_photo.url}}" alt=""></a>
+        <a href="{{user.procfile_photo.url}}" id="url_img"><img id="img" src="{{user.procfile_photo.url}}" alt=""></a>
         {% else %}
-        <img src="{% static 'imgs/fundo.jpg' %}" id="img" alt="">
+        <a href="/static/imgs/fundo.jpg"><img src="{% static 'imgs/fundo.jpg' %}" id="img" alt=""></a>
         {% endif %}
         {{form.procfile_photo}}
       </div>

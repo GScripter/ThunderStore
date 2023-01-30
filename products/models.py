@@ -37,6 +37,14 @@ class ProductImage(TimeStampedModel):
     description = models.TextField(blank=True)
 
 
+NOTA = (
+    ('péssimo','péssimo'),
+    ('ruim','ruim'),
+    ('bom','bom'),
+    ('excelente','excelente'),
+    ('maravilhoso','maravilhoso'),
+)
+
 class Assessment(TimeStampedModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     image = models.ImageField(upload_to='procfile/%Y/%m/%d', blank=True)
@@ -45,6 +53,7 @@ class Assessment(TimeStampedModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE
     )
+    choice_nota = models.CharField(choices=NOTA, max_length=12, default='ruim')
 
     def __str__(self):
         return f'{self.product}'

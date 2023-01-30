@@ -52,6 +52,7 @@
               {% else %}
                 <p class="customer_name">Desconhecido</p>
               {% endif %}
+              {% include 'stars.html' %}
             </div>
           </div>
           <div class="customer_comment row">
@@ -69,14 +70,33 @@
       </div>
       {% else %}
         {% if user.is_authenticated %}
-          <form action="{% url 'products:assessment' product.id %}" method="POST">
-            {% csrf_token %}
-            <h4 class="text-center mt-5">Deixe sua opinião á respeito do produto.</h4>
-            <div class="row justify-content-center">
-              <div class="col-12"><textarea id="" name="assessment" cols="30" rows="10" class="form-control"></textarea></div>
-              <div class="col-12 mb-4"><input type="submit" value="comentar" class="form-control btn btn-success mt-2"></div>
-            </div>
-          </form>
+          {% if assessments_limit %}
+            {% if assessments_total < assessments_limit and assessments_total <= 10 %}
+            <form action="{% url 'products:assessment' product.id %}" method="POST">
+              {% csrf_token %}
+              <h4 class="text-center mt-5">Deixe sua opinião á respeito do produto.</h4>
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <select id="" name="nota" class="stars-select">
+                    <option value="péssimo">péssimo</option>
+                    <option value="ruim">ruim</option>
+                    <option value="bom">bom</option>
+                    <option value="excelente">excelente</option>
+                    <option value="maravilhoso">maravilhoso</option>
+                  </select>
+                </div>
+                <div class="col-12"><textarea id="" name="assessment" cols="30" rows="10" class="form-control"></textarea></div>
+                <div class="col-12"><input type="submit" value="comentar" class="form-control btn btn-success mt-2"></div>
+              </div>
+            </form>
+            {% elif assessments_total > 10 %}
+              <h3>Você já comentou muitas vezes nesse produto.</h3>
+            {% else %}
+              <h3>Compre o produto para poder comentar.</h3>
+            {% endif %}
+          {% else %}
+            <h3>Compre o produto e seja o primeiro a comentar.</h3>
+          {% endif %}
         {% else %}
           <div class="row justify-content-center"><a class="mt-2 mb-3 button-anime" href="{% url 'account_login' %}">Cadastre-se para comentar.</a></div>
         {% endif %}
