@@ -59,3 +59,18 @@ function ShowProductImage(smallImg){
   var fullImg =  document.getElementById("imageBox")
   fullImg.src = smallImg.src;
 }
+
+
+if(localStorage.cookies == null){
+  var cookie_alert = window.document.getElementsByClassName("cookie-alert")[0]
+  cookie_alert.style.display = "block" 
+  var cookies = window.document.getElementById("cookies")
+  cookies.addEventListener("click", Cookies)
+}
+
+function Cookies(){
+  localStorage.cookies = "true"
+  var cookies_alert = window.document.getElementsByClassName("cookie-alert")[0]
+  cookies_alert.style.display = "none" 
+}
+

@@ -68,11 +68,14 @@ class OrderCompleteHook(generics.GenericAPIView):
         )
         # Handle the checkout.session.completed event
         if event['type'] == 'checkout.session.completed':
-            if event['data']['object']['payment_status'] == 'paid':
-                session_id = event['data']['object']['id']
-                order = Order.objects.filter(checkout_session_id=session_id).first()
-                if order:
-                    order.is_paid = True
-                    order.save()
+            session_id = event['data']['object']['id']
+            order = Order.objects.filter(checkout_session_id=session_id).first()
+            order.checkout_session_id = event['data']['object']['payment_intent']
+            order.save()
+        elif event['type'] == 'payment_intent.succeeded':
+            session_id = event['data']['object']['id']
+            order = Order.objects.filter(checkout_session_id=session_id).first()
+            order.is_paid = True
+            order.save()
         return HttpResponse(status=200)
 

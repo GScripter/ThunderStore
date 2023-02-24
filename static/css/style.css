@@ -693,6 +693,28 @@ footer .links-list li a:hover{
 
 
 /* ----------------------- */
+/* Cookie alert
+/* ----------------------- */
+.cookie-alert{
+  position: fixed;
+  padding: 20px;
+  bottom: 0px;
+  left: 10px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  height: 350px;
+  background-color: #f0f0f0;
+  z-index: 100;
+  text-align: center;
+  display: none;
+}
+
+.cookie-alert a{
+  padding-left: 20px;
+}
+
+/* ----------------------- */
 /* Cart
 /* ----------------------- */
 .cart-title{
@@ -994,6 +1016,10 @@ footer .links-list li a:hover{
 
 .dark #login .social-login button{
   color: #fff;
+  background-color: #343A40;
+}
+
+.dark .cookie-alert{
   background-color: #343A40;
 }
 
