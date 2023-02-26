@@ -1,9 +1,4 @@
-<img src="https://img.shields.io/github/license/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt="">
-<img src="https://img.shields.io/github/repo-size/GabrielSantos198/ThunderStore?style=for-the-badge" alt="">
-<img src="https://img.shields.io/github/languages/count/GabrielSantos198/ThunderStore?style=for-the-badge" alt="">
-<img src="https://img.shields.io/github/issues/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt="">
-<img src="https://img.shields.io/github/issues-pr/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt="">
-<img src="https://img.shields.io/github/stars/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt="">
+<img src="https://img.shields.io/github/license/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt=""><img src="https://img.shields.io/github/repo-size/GabrielSantos198/ThunderStore?style=for-the-badge" alt=""><img src="https://img.shields.io/github/languages/count/GabrielSantos198/ThunderStore?style=for-the-badge" alt=""><img src="https://img.shields.io/github/issues/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt=""><img src="https://img.shields.io/github/issues-pr/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt=""><img src="https://img.shields.io/github/stars/GabrielSantos198/ThunderStore?color=blue&style=for-the-badge" alt="">
 
 <p align="center">
 <img src="static/imgs/logo.png" width=300px alt="">
@@ -12,10 +7,8 @@
 <h1 align="center"> ⭐ Thunder Store </h1>
 
 <p align="center">
-  <sub> ⭐ This README covers all the specifics of the Thunder Store system.
-  <sub>
+  <sub> ⭐ This README covers all the specifics of the Thunder Store system.<sub>
 </p>
-
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
@@ -41,25 +34,24 @@ Back-End | <img src="https://res.cloudinary.com/degkn8uwg/image/upload/v1/media-
 Others | Vim, Stripe, Docker, Google Analytics.
 <br/>
 
-
 <a id="results"></a>
 ## 🚀 Results
   > All results were successfully achieved. In general, these are the results of each request.
 
 ⭐ Name | ⭐ Link |
-|---|---|---|---|
-Home Page | https://thunderstore.up.railway.app/|
-Products Page | https://thunderstore.up.railway.app/produtos/|
-Featured Products | https://thunderstore.up.railway.app/#featured-products|
-About | https://thunderstore.up.railway.app/pagina/sobre/|
-Contact, Support | https://thunderstore.up.railway.app/pagina/contato/|
-Blog | https://thunderstore.up.railway.app/blog/|
-FaQ | https://thunderstore.up.railway.app/pagina/faqs/|
-Politic | https://thunderstore.up.railway.app/pagina/politica/|
-Track Order | https://thunderstore.up.railway.app/produto/rastreio/|
-Shopping Cart | https://thunderstore.up.railway.app/cart/cart-detail/|
-Login | https://thunderstore.up.railway.app/accounts/login/|
-Sign up | https://thunderstore.up.railway.app/accounts/signup/|
+|---|---|
+Home Page | https://thunderstore.up.railway.app/
+Products Page | https://thunderstore.up.railway.app/produtos/
+Featured Products | https://thunderstore.up.railway.app/#featured-products
+About | https://thunderstore.up.railway.app/pagina/sobre/
+Contact, Support | https://thunderstore.up.railway.app/pagina/contato/
+Blog | https://thunderstore.up.railway.app/blog/
+FaQ | https://thunderstore.up.railway.app/pagina/faqs/
+Politic | https://thunderstore.up.railway.app/pagina/politica/
+Track Order | https://thunderstore.up.railway.app/produto/rastreio/
+Shopping Cart | https://thunderstore.up.railway.app/cart/cart-detail/
+Login | https://thunderstore.up.railway.app/accounts/login/
+Sign up | https://thunderstore.up.railway.app/accounts/signup/
 <br/> 
 
 ## Screens
@@ -84,17 +76,13 @@ Sign up | https://thunderstore.up.railway.app/accounts/signup/|
  ⭐ Home | ⭐ Product Detail | ⭐ Cart | FaQ |
 |---|---|---|---|
 ![HomePage](static/imgs/picture_8.png) | ![Detalhes](static/imgs/picture_5.png) | ![Detalhes](static/imgs/picture_6.png) | ![Detalhes](static/imgs/picture_7.png)
-
-
 <br/>
-
+  
 <a id="dependencies"></a>
 ## 🧪 Dependencies
 > Requirements to rotate the code.
 - Docker
 - docker-compose
-<br/>
-<br/>
 
 <h4>Step-1</h4> <code>git clone link https://github.com/GabrielSantos198/ThunderStore</code>
 
@@ -113,7 +101,8 @@ API_SECRET | Your API secret on Cloudinary
 STRIPE_PUBLISHABLE_KEY | Your publishable key on Stripe
 STRIPE_SECRET_KEY | Your secret key on Stripe
 STRIPE_ENDPOINT_SECRET | Your Secret Endpoint on Stripe
-<br />   
+<br />
+
 OBS: <br/>
 - Cloudinary is used to store media files.<br/>
 - Stripe allows you to make payments in the system.<br/>
@@ -146,16 +135,13 @@ OBS: It is also possible to run the application without docker, just clone the r
 <a id="credits"></a>
 ## 🏆 Credits
 
-
-<br />
-
-  ### ***⠀⠀⠀⠀⭐ For every project we have to give credits to the creators so nothing better than finishing with a golden key with the creators / creator of the project***.
+  ### ***⭐ For every project we have to give credits to the creators so nothing better than finishing with a golden key with the creators / creator of the project***.
 
 <br /> 
 
 <div > 
 
-| [<img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/69887726?v=4" width=300><br><sub> Gabriel Santana </sub>](https://www.linkedin.com/in/gabrielsantana444) | ***Hello 😃 If you made it this far, I believe you liked my project, in which case we have something in common, so how about we talk a little? My call on linkedin*** 😁 |
+| [<img src="https://avatars.githubusercontent.com/u/69887726?v=4" width=300><br><sub> Gabriel Santana </sub>](https://www.linkedin.com/in/gabrielsantana444) | ***Hello 😃 If you made it this far, I believe you liked my project, in which case we have something in common, so how about we talk a little? My call on linkedin*** 😁 |
 |---|---|
 
 
