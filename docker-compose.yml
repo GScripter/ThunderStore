@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - 9000:8000
+    container_name: thunder-store
+    volumes:
+      - .:/ThunderStore/
+    environment:
+      - DEBUG=value
+      - EMAIL_HOST_USER=value
+      - EMAIL_HOST_PASSWORD=value
+      - RECIPIENT_ADDRESS=value
+      - CLOUD_NAME=value
+      - API_KEY=value
+      - API_SECRET=value
+      - STRIPE_PUBLISHABLE_KEY=value
+      - STRIPE_SECRET_KEY=value
+      - STRIPE_ENDPOINT_SECRET=value
+      - SECRET_KEY=value

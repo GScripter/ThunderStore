@@ -697,21 +697,21 @@ footer .links-list li a:hover{
 /* ----------------------- */
 .cookie-alert{
   position: fixed;
-  padding: 20px;
-  bottom: 0px;
-  left: 10px;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  text-align: center;
+  background-color: #f0f0f0;
   border-radius: 10px;
   width: 90%;
-  max-width: 400px;
-  height: 350px;
-  background-color: #f0f0f0;
-  z-index: 100;
-  text-align: center;
+  max-width: 500px;
   display: none;
 }
 
 .cookie-alert a{
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 /* ----------------------- */
